@@ -1,0 +1,1432 @@
+{
+  "schema_version": "1.2",
+  "document_type": "planetary_exploration_research_submission",
+  "language": "English",
+  "project": {
+    "title": "Planetary Exploration Research: Mars, Earth's Moon, and Europa",
+    "prepared_date": "2026-11-13",
+    "purpose": "A structured, source-linked research dataset for a planetary exploration website or project submission.",
+    "scope": [
+      "Collect official NASA and NASA-supported open-data links for Mars, the Moon, and Europa.",
+      "Fact-check reference surface-gravity values and provide equations for a weight and idealized jump simulator.",
+      "Summarize the known internal layers of Mars, the Moon, and Europa, while separating measured constraints from model-dependent estimates.",
+      "Provide a scientifically accurate time-travel comparison for Mars and Europa about 4.0 to 3.5 billion years ago.",
+      "Provide three real Mars locations and three real lunar locations with decimal-degree coordinates and reasons for selecting them.",
+      "Define a simple base-planning grid and a transparent comparative site-screening index.",
+      "Add a NASA-sourced visual gallery with preview images and official 3D model resources for Earth, Mars, and Europa."
+    ],
+    "scope_note": "The landing-site locator covers Mars and the Moon because the task examples refer to Jezero, Gale, Gusev, and Shackleton. Europa is included in the scientific comparison, not as a landing-site candidate: no surface landing site has been established for Europa, and its radiation environment near Jupiter is severe.",
+    "important_scientific_corrections": [
+      "The Moon's Shackleton Crater may contain water ice in permanently shadowed regions, but the presence and amount of usable ice at a specific base location must be verified. The crater does not automatically protect a habitat from radiation; radiation shielding would require engineered shielding, such as suitable regolith cover.",
+      "Mars had evidence of ancient surface liquid water and may have had a thicker atmosphere than it has today. Europa's water is thought to be a subsurface ocean beneath ice; do not describe Europa as having an ancient exposed surface ocean or an Earth-like thick atmosphere.",
+      "The safety values in this file are project-defined relative screening indices, not NASA ratings, not measured probabilities of survival, and not engineering certifications."
+    ],
+    "coverage_note": "The explicit Mars rover landing-date/coordinate request is covered in landing_site_locator.mars_rover_landing_records, including Opportunity at Meridiani Planum. The three selected Mars and three selected lunar locator sites remain unchanged. Internal layer pressure/temperature values are intentionally null where no defensible source value is available. The NASA 3D Planetary Visual Gallery is included in planetary_visual_gallery, with one preview image and an official 3D model resource for Earth, Mars, and Europa."
+  },
+  "data_sources": [
+    {
+      "id": "NASA_PDS",
+      "title": "NASA Planetary Data System (PDS)",
+      "organization": "NASA",
+      "url": "https://pds.nasa.gov/",
+      "purpose": "The main archive for peer-reviewed data products returned by NASA planetary missions. Use it to find original mission data, instrument records, documentation, and release notes.",
+      "recommended_use": [
+        "Mission data archives",
+        "Instrument measurements",
+        "Images and derived products",
+        "Metadata and data documentation"
+      ]
+    },
+    {
+      "id": "IPDA_MARS_DATA",
+      "title": "International Planetary Data Alliance - Mars Data Access",
+      "organization": "IPDA / NASA-linked planetary data catalog",
+      "url": "https://ipda.pds.mcp.nasa.gov/access-to-data/mars-data/",
+      "purpose": "A discovery page linking to Mars mission datasets and tools, including Mars 2020, Curiosity, InSight, Spirit, and Opportunity resources.",
+      "recommended_use": [
+        "Finding the correct Mars mission archive",
+        "Locating rover analyst notebooks",
+        "Discovering mission-specific data tools"
+      ]
+    },
+    {
+      "id": "MARS_ATMOSPHERE_ARCHIVE",
+      "title": "Mars Atmospheric Data Archive",
+      "organization": "NASA PDS Atmospheres Node",
+      "url": "https://pds-atmospheres.nmsu.edu/data_and_services/atmospheres_data/MARS/data_archive.html",
+      "purpose": "Access atmospheric and meteorological datasets from Mars orbiters and landers, organized by mission and instrument.",
+      "recommended_use": [
+        "Weather and atmosphere",
+        "Pressure and temperature records",
+        "Mission and instrument data"
+      ]
+    },
+    {
+      "id": "INSIGHT_PDS_ARCHIVE",
+      "title": "NASA InSight Mission Data Archive",
+      "organization": "NASA PDS Geosciences Node",
+      "url": "https://pds-geosciences.wustl.edu/missions/insight/",
+      "purpose": "Access InSight science archives, especially SEIS seismic data and supporting geophysical datasets used to constrain the Martian crust, mantle, and core.",
+      "recommended_use": [
+        "Mars internal structure",
+        "Seismic observations",
+        "Geophysical constraints"
+      ]
+    },
+    {
+      "id": "INSIGHT_PRESSURE_TEMPERATURE",
+      "title": "InSight Pressure and Temperature Archive Guide",
+      "organization": "NASA PDS Atmospheres Node / InSight archive documentation",
+      "url": "https://pdsatmospheres.nmsu.edu/data_and_services/atmospheres_data/INSIGHT/insight_temp.html",
+      "purpose": "Explains access to InSight pressure-sensor and temperature records. These are atmospheric/lander-environment measurements, not direct measurements of pressure and temperature inside every deep planetary layer.",
+      "recommended_use": [
+        "Surface atmospheric pressure",
+        "Surface air and sensor temperature",
+        "Understanding data rates and calibration"
+      ]
+    },
+    {
+      "id": "MARS2020_PDS",
+      "title": "Mars 2020 Perseverance Data Archive",
+      "organization": "NASA PDS Geosciences Node",
+      "url": "https://pds-geosciences.wustl.edu/missions/mars2020/index.htm",
+      "purpose": "Access raw, calibrated, and derived science data from the Perseverance rover and its instruments in Jezero Crater.",
+      "recommended_use": [
+        "Jezero landing-area data",
+        "Rover imagery and science observations",
+        "Surface environment and sample context"
+      ]
+    },
+    {
+      "id": "LRO_NASA_DATA_PRODUCTS",
+      "title": "Lunar Reconnaissance Orbiter Data Products",
+      "organization": "NASA",
+      "url": "https://science.nasa.gov/mission/lro/data-products/",
+      "purpose": "NASA overview of Lunar Reconnaissance Orbiter data products, including topography, imagery, and access to PDS archives and QuickMap.",
+      "recommended_use": [
+        "Lunar maps",
+        "Terrain and elevation",
+        "Polar imagery",
+        "Landing-site context"
+      ]
+    },
+    {
+      "id": "LRO_PDS_ARCHIVE",
+      "title": "LRO Mission Archive and Instrument Data",
+      "organization": "NASA PDS Geosciences Node",
+      "url": "https://pds-geosciences.wustl.edu/missions/lro/",
+      "purpose": "Provides access to LRO instrument archives, including LOLA topography, Diviner thermal observations, LEND, LROC, and other datasets.",
+      "recommended_use": [
+        "Elevation grids",
+        "Surface temperature datasets",
+        "Images",
+        "Polar-region data"
+      ]
+    },
+    {
+      "id": "EUROPA_FACTS",
+      "title": "Europa: Facts and Internal Structure",
+      "organization": "NASA Science",
+      "url": "https://science.nasa.gov/jupiter/jupiter-moons/europa/europa-facts/",
+      "purpose": "NASA overview of Europa's likely ice shell, subsurface ocean, rocky mantle, and metallic core.",
+      "recommended_use": [
+        "Europa's internal layers",
+        "Ocean-depth estimates",
+        "Scientific context"
+      ]
+    },
+    {
+      "id": "EUROPA_CLIPPER_FAQ",
+      "title": "Europa Clipper Mission FAQ",
+      "organization": "NASA Science",
+      "url": "https://science.nasa.gov/mission/europa-clipper/mission-faq/",
+      "purpose": "NASA overview of Europa's ice shell, ocean, surface temperatures, and mission science objectives.",
+      "recommended_use": [
+        "Europa temperature range",
+        "Ice-shell and ocean context",
+        "Mission objectives"
+      ]
+    },
+    {
+      "id": "JUNO_EUROPA_ICE_2026",
+      "title": "NASA's Juno Measures Thickness of Europa's Ice Shell",
+      "organization": "NASA / Jet Propulsion Laboratory",
+      "url": "https://www.nasa.gov/missions/juno/nasas-juno-measures-thickness-of-europas-ice-shell/",
+      "publication_date": "2026-01-27",
+      "purpose": "Reports a Juno Microwave Radiometer estimate averaging about 29 km for the ice shell in the region observed during the 2022 Europa flyby.",
+      "recommended_use": [
+        "Most recent regional ice-shell measurement in this submission",
+        "Updating older global-range summaries with an explicit regional caveat"
+      ]
+    },
+    {
+      "id": "JPL_SATELLITE_PARAMETERS",
+      "title": "JPL Planetary Satellite Physical Parameters",
+      "organization": "NASA Jet Propulsion Laboratory",
+      "url": "https://ssd.jpl.nasa.gov/sats/phys_par/",
+      "purpose": "Provides gravitational parameter (GM), mean radius, and density for planetary satellites. Europa's surface gravity can be derived from GM and radius.",
+      "recommended_use": [
+        "Europa gravity calculation",
+        "Moon and Europa physical parameters"
+      ]
+    },
+    {
+      "id": "MARS_FACT_SHEET",
+      "title": "Mars Fact Sheet",
+      "organization": "NASA NSSDC",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html?level=1",
+      "purpose": "Reference planetary parameters including mean radius and mean surface gravity for Mars.",
+      "recommended_use": [
+        "Mars gravity",
+        "Mars mean radius",
+        "Planetary comparisons"
+      ]
+    },
+    {
+      "id": "MOON_FACTS",
+      "title": "Moon Facts",
+      "organization": "NASA Science",
+      "url": "https://science.nasa.gov/moon/facts/",
+      "purpose": "NASA reference for lunar crust, mantle, and core structure and other basic lunar properties.",
+      "recommended_use": [
+        "Lunar internal structure",
+        "Crust thickness",
+        "Core sublayers"
+      ]
+    },
+    {
+      "id": "MOON_GRAVITY",
+      "title": "Moon - Glenn Research Center",
+      "organization": "NASA Glenn Research Center",
+      "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/moon/",
+      "purpose": "Provides the Moon's mean surface gravitational acceleration of approximately 1.62 m/s^2.",
+      "recommended_use": [
+        "Moon gravity fact-check"
+      ]
+    },
+    {
+      "id": "INSIGHT_STRUCTURE_HIGHLIGHTS",
+      "title": "InSight Science Highlights: Mars' Crust, Mantle, and Core",
+      "organization": "NASA Science",
+      "url": "https://science.nasa.gov/mission/insight/science-highlights/",
+      "purpose": "NASA summary of InSight's seismic constraints: crust about 25-40 km thick with three layers and a molten core about 1,800 km in radius.",
+      "recommended_use": [
+        "Mars internal-layer summary",
+        "Crust thickness",
+        "Core state and approximate radius"
+      ]
+    },
+    {
+      "id": "MARS_MANTLE_TEMPERATURE_STUDY",
+      "title": "Seismic Detection of a Deep Mantle Discontinuity Within Mars by InSight",
+      "organization": "Peer-reviewed study indexed by PubMed",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36215469/",
+      "purpose": "Reports an InSight-based inference of a mantle discontinuity at about 1,006 +/- 40 km depth and a mantle potential temperature of about 1,605 +/- 100 K. This is a specific model-derived constraint, not the average temperature of the entire mantle.",
+      "recommended_use": [
+        "A carefully qualified Mars mantle-temperature reference"
+      ]
+    },
+    {
+      "id": "MARS_TIME_HISTORY",
+      "title": "NASA-Funded Study Extends Period When Mars Could Have Supported Life",
+      "organization": "NASA",
+      "url": "https://www.nasa.gov/solar-system/nasa-funded-study-extends-period-when-mars-could-have-supported-life/",
+      "purpose": "Describes the Late Noachian interval, approximately 4.1 to 3.5 billion years ago, and evidence for ancient flowing water and potentially habitable surface conditions.",
+      "recommended_use": [
+        "Cosmic Time Machine: early Mars"
+      ]
+    },
+    {
+      "id": "EARLY_MARS_NOACHIAN",
+      "title": "Noachian (Early) Mars",
+      "organization": "NASA",
+      "url": "https://www.nasa.gov/general/noachian-early-mars/",
+      "purpose": "Summarizes evidence for episodic liquid water, valley networks, open lakes, and clay minerals on early Mars.",
+      "recommended_use": [
+        "Explaining ancient Martian surface water"
+      ]
+    },
+    {
+      "id": "EUROPA_OCEAN_HISTORY",
+      "title": "Europa: Facts - Potential for Life",
+      "organization": "NASA Science",
+      "url": "https://science.nasa.gov/jupiter/jupiter-moons/europa/europa-facts/",
+      "purpose": "NASA notes that Europa's ocean may have existed for much of, possibly all of, the solar system's approximately four-billion-year history.",
+      "recommended_use": [
+        "Cosmic Time Machine: Europa"
+      ]
+    },
+    {
+      "id": "JEZERO_LANDING",
+      "title": "Mars 2020 Perseverance Landing Site",
+      "organization": "NASA Jet Propulsion Laboratory",
+      "url": "https://www.jpl.nasa.gov/news/press_kits/mars_2020/landing/mission/landing_site/",
+      "purpose": "Provides Jezero's location, landing-site context, and evidence for an ancient lake and river delta.",
+      "recommended_use": [
+        "Jezero coordinates and selection reason"
+      ]
+    },
+    {
+      "id": "JEZERO_TOUCHDOWN_COORDINATES",
+      "title": "Assessment of the Mars 2020 Entry, Descent, and Landing Simulation",
+      "organization": "NASA Technical Reports Server",
+      "url": "https://ntrs.nasa.gov/citations/20210024644",
+      "purpose": "Reports Perseverance's actual landing coordinates as 18.44463 degrees north, 77.45088 degrees east.",
+      "recommended_use": [
+        "More precise Perseverance touchdown coordinates"
+      ]
+    },
+    {
+      "id": "GALE_LANDING",
+      "title": "Gale Crater: Future Home of Mars Rover Curiosity",
+      "organization": "NASA Science",
+      "url": "https://science.nasa.gov/resource/gale-crater-future-home-of-mars-rover-curiosity/",
+      "purpose": "Gives NASA's approximate Curiosity landing target coordinates and explains the crater's layered mountain and water-related geological context.",
+      "recommended_use": [
+        "Gale coordinates and selection reason"
+      ]
+    },
+    {
+      "id": "SPIRIT_LANDING",
+      "title": "Spirit Mars Rover Mission",
+      "organization": "NASA Science",
+      "url": "https://science.nasa.gov/mission/mer-spirit/",
+      "purpose": "Reports Spirit's actual landing coordinates inside Gusev Crater.",
+      "recommended_use": [
+        "Gusev coordinates and mission history"
+      ]
+    },
+    {
+      "id": "SHACKLETON_GAZETTEER",
+      "title": "Shackleton Crater - Gazetteer of Planetary Nomenclature",
+      "organization": "USGS / International Astronomical Union",
+      "url": "https://planetarynames.wr.usgs.gov/Feature/5450",
+      "purpose": "Provides the adopted feature centre coordinates and boundary information for Shackleton Crater.",
+      "recommended_use": [
+        "Shackleton crater coordinates"
+      ]
+    },
+    {
+      "id": "SHACKLETON_LIGHTING",
+      "title": "Shackleton Crater's Illuminated Rim and Shadowed Interior",
+      "organization": "NASA Science / NASA Goddard / Arizona State University",
+      "url": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/",
+      "purpose": "Explains the long illumination of parts of the rim, permanently shadowed interior, and potential for preserving water ice.",
+      "recommended_use": [
+        "Shackleton selection reason",
+        "Lighting and resource constraints"
+      ]
+    },
+    {
+      "id": "APOLLO_LANDING_COORDINATES",
+      "title": "Apollo Landing Site Coordinates",
+      "organization": "NASA NSSDC",
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+      "purpose": "Lists Apollo lunar-module landing coordinates in a documented lunar reference system based on LRO image localization.",
+      "recommended_use": [
+        "Apollo 16 and Apollo 17 coordinates"
+      ]
+    },
+    {
+      "id": "APOLLO_16_CONTEXT",
+      "title": "Apollo 16 Mission Details",
+      "organization": "NASA",
+      "url": "https://www.nasa.gov/missions/apollo/apollo-16-mission-details/",
+      "purpose": "Describes the Descartes highlands landing area and its geological objectives.",
+      "recommended_use": [
+        "Descartes site rationale"
+      ]
+    },
+    {
+      "id": "APOLLO_17_CONTEXT",
+      "title": "Apollo 17 Mission Details",
+      "organization": "NASA",
+      "url": "https://www.nasa.gov/missions/apollo/apollo-17-mission-details/",
+      "purpose": "Describes the Taurus-Littrow landing region and Apollo 17 exploration.",
+      "recommended_use": [
+        "Taurus-Littrow site rationale"
+      ]
+    },
+    {
+      "id": "MARS_TEMPERATURES",
+      "title": "Temperatures Across Our Solar System",
+      "organization": "NASA Science",
+      "url": "https://science.nasa.gov/solar-system/temperatures-across-our-solar-system/",
+      "purpose": "Provides a broad Mars surface-temperature range and Perseverance local ground and air temperature ranges.",
+      "recommended_use": [
+        "Mars thermal-hazard context"
+      ]
+    },
+    {
+      "id": "MARS_RADIATION",
+      "title": "Radiation Measurements on Mars",
+      "organization": "NASA Science / Curiosity RAD",
+      "url": "https://science.nasa.gov/resource/radiation-measurements-on-mars/",
+      "purpose": "Summarizes Curiosity RAD surface measurements, including an absorbed-dose rate near 210 microgray per day during the first 10 months. Absorbed dose in microgray must not be treated as dose-equivalent in millisievert without a radiation quality factor.",
+      "recommended_use": [
+        "Mars radiation hazard context"
+      ]
+    },
+    {
+      "id": "MARS_DOSE_EQUIVALENT_STUDY",
+      "title": "A Science Strategy for the Human Exploration of Mars",
+      "organization": "National Academies of Sciences, Engineering, and Medicine",
+      "url": "https://www.nationalacademies.org/read/28594/chapter/4",
+      "purpose": "Summarizes an estimated Mars surface galactic-cosmic-ray dose-equivalent rate around 0.64 mSv/day, based on Curiosity RAD measurements and related studies. This is a mission-environment reference, not a location-by-location safety measurement.",
+      "recommended_use": [
+        "Radiation discussion with clear measurement context"
+      ]
+    },
+    {
+      "id": "LUNAR_SOUTH_POLE_ENVIRONMENT",
+      "title": "The Lunar South Pole Region",
+      "organization": "NASA",
+      "url": "https://www.nasa.gov/reference/moonbase-environment/",
+      "purpose": "Explains lunar South Pole illumination and thermal extremes, including very cold permanently shadowed regions and warmer nearby sunlit areas.",
+      "recommended_use": [
+        "Shackleton base-planning constraints"
+      ]
+    },
+    {
+      "id": "LUNAR_RADIATION",
+      "title": "Apollo Radiation Measurements and Dose Rates at the Moon",
+      "organization": "NASA History Office",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/WOTM/WOTM-Radiation.html",
+      "purpose": "Provides historical Apollo-era lunar radiation dose-rate estimates. These should be presented as historical context, not as modern site-specific measurements.",
+      "recommended_use": [
+        "Lunar radiation hazard context"
+      ]
+    },
+    {
+      "id": "MARS_EXPLORATION_PROGRAM",
+      "title": "NASA Mars Exploration Program",
+      "organization": "NASA",
+      "url": "https://science.nasa.gov/planetary-science/programs/mars-exploration/",
+      "purpose": "Official overview of NASA's Mars exploration program and links to missions including InSight, Curiosity, Perseverance, Spirit, and Opportunity.",
+      "recommended_use": [
+        "Program overview",
+        "Mission navigation",
+        "Mission context"
+      ]
+    },
+    {
+      "id": "OPPORTUNITY_MISSION",
+      "title": "Mars Exploration Rover Opportunity",
+      "organization": "NASA",
+      "url": "https://science.nasa.gov/mission/mer-opportunity/",
+      "purpose": "Official NASA mission record for Opportunity, including its Meridiani Planum landing location, coordinates, and mission dates.",
+      "recommended_use": [
+        "Opportunity landing date",
+        "Opportunity landing coordinates",
+        "Mission history"
+      ]
+    },
+    {
+      "id": "CURIOSITY_MISSION",
+      "title": "Mars Science Laboratory: Curiosity Rover",
+      "organization": "NASA/JPL",
+      "url": "https://www.jpl.nasa.gov/missions/mars-science-laboratory-curiosity-rover-msl/",
+      "purpose": "Official mission page confirming Curiosity's Gale Crater landing and mission dates.",
+      "recommended_use": [
+        "Curiosity landing date",
+        "Gale Crater mission context"
+      ]
+    },
+    {
+      "id": "PERSEVERANCE_LOCATION_MAP",
+      "title": "Where is Perseverance?",
+      "organization": "NASA",
+      "url": "https://science.nasa.gov/mission/mars-2020-perseverance/location-map/",
+      "purpose": "Official NASA location map and landing-date confirmation for Perseverance in Jezero Crater.",
+      "recommended_use": [
+        "Perseverance landing date",
+        "Rover location context"
+      ]
+    },
+    {
+      "id": "NASA_EYES_SOLAR_SYSTEM",
+      "title": "NASA Eyes on the Solar System",
+      "organization": "NASA/JPL-Caltech",
+      "url": "https://eyes.nasa.gov/apps/solar-system/",
+      "purpose": "Browser-based interactive 3D visualization for exploring planets, moons, and spacecraft using NASA mission data and imagery.",
+      "recommended_use": [
+        "Interactive 3D exploration of Earth, Mars, and Europa",
+        "Spacecraft and planetary context",
+        "Visual demonstration in the website"
+      ]
+    },
+    {
+      "id": "EARTH_BLUE_MARBLE_IMAGE",
+      "title": "Blue Marble - NASA Science",
+      "organization": "NASA Goddard Space Flight Center",
+      "url": "https://science.nasa.gov/resource/blue-marble/",
+      "purpose": "NASA's true-color global Earth image used as the static preview image in the planetary visual gallery.",
+      "recommended_use": [
+        "Earth preview image",
+        "Reference-world visual",
+        "Earth surface and cloud context"
+      ]
+    },
+    {
+      "id": "EARTH_3D_MODEL",
+      "title": "Earth 3D Model Interactive",
+      "organization": "NASA/JPL-Caltech",
+      "url": "https://science.nasa.gov/learn/heat/resource/earth-3d-model/",
+      "purpose": "Official NASA Earth 3D model resource page. NASA lists downloadable glTF and USDZ model files.",
+      "recommended_use": [
+        "Earth 3D model resource",
+        "glTF or USDZ download",
+        "Interactive model reference"
+      ]
+    },
+    {
+      "id": "MARS_TRUE_COLOR_GLOBE",
+      "title": "Mars Rotate - True Color",
+      "organization": "NASA Goddard Space Flight Center Scientific Visualization Studio",
+      "url": "https://svs.gsfc.nasa.gov/659/",
+      "purpose": "NASA true-color Mars globe visualization using Viking imagery and MOLA topographic data.",
+      "recommended_use": [
+        "Mars preview image",
+        "Mars globe visualization",
+        "Surface topography context"
+      ]
+    },
+    {
+      "id": "MARS_3D_MODEL",
+      "title": "Planet Mars 3D Model",
+      "organization": "NASA/JPL-Caltech",
+      "url": "https://science.nasa.gov/resource/planet-mars-3d-model/",
+      "purpose": "Official NASA interactive Mars 3D model resource page. NASA states that the model can be rotated by dragging and lists glTF and USDZ downloads.",
+      "recommended_use": [
+        "Mars 3D model resource",
+        "glTF or USDZ download",
+        "Interactive Mars visualization"
+      ]
+    },
+    {
+      "id": "EUROPA_JUNOCAM_IMAGE",
+      "title": "A JunoCam View of Europa",
+      "organization": "NASA/JPL-Caltech/SwRI/MSSS; image processing by Björn Jónsson (CC BY 3.0)",
+      "url": "https://science.nasa.gov/photojournal/a-junocam-view-of-europa/",
+      "purpose": "NASA JunoCam spacecraft image of Jupiter's moon Europa, used as the static preview image in the planetary visual gallery.",
+      "recommended_use": [
+        "Europa preview image",
+        "Icy surface fractures and ridges",
+        "Cosmic Time Machine visual context"
+      ]
+    },
+    {
+      "id": "EUROPA_3D_MODEL",
+      "title": "Europa 3D Model",
+      "organization": "NASA Visualization Technology Applications and Development (VTAD)",
+      "url": "https://science.nasa.gov/resource/europa-3d-model/",
+      "purpose": "Official NASA 3D model resource for Europa. NASA lists glTF and USDZ model downloads.",
+      "recommended_use": [
+        "Europa 3D model resource",
+        "glTF or USDZ download",
+        "Icy moon visualization"
+      ]
+    }
+  ],
+  "fact_checking": {
+    "surface_gravity": {
+      "unit": "m/s^2",
+      "values": [
+        {
+          "body": "Mars",
+          "surface_gravity_m_s2": 3.73,
+          "status": "NASA reference value",
+          "explanation": "Use 3.73 m/s^2 as the mean surface gravity for Mars. A value of 3.72 m/s^2 is close but should not replace the selected reference value in this dataset.",
+          "source_ids": [
+            "MARS_FACT_SHEET"
+          ]
+        },
+        {
+          "body": "Earth's Moon",
+          "surface_gravity_m_s2": 1.62,
+          "status": "NASA reference value",
+          "explanation": "Use approximately 1.62 m/s^2 for the Moon's mean surface gravitational acceleration.",
+          "source_ids": [
+            "MOON_GRAVITY"
+          ]
+        },
+        {
+          "body": "Europa",
+          "surface_gravity_m_s2": 1.315,
+          "status": "Calculated from JPL reference parameters",
+          "calculation": "g = 1000 * GM / r^2, where GM is in km^3/s^2 and r is in km.",
+          "input_parameters": {
+            "GM_km3_s2": 3202.7121,
+            "mean_radius_km": 1560.8
+          },
+          "explanation": "The value is derived from JPL's gravitational parameter and mean radius, rather than copied from a mission landing measurement.",
+          "source_ids": [
+            "JPL_SATELLITE_PARAMETERS"
+          ]
+        }
+      ],
+      "calculator_formulas": {
+        "weight": {
+          "equation": "W = m * g",
+          "variables": {
+            "W": "weight in newtons (N)",
+            "m": "mass in kilograms (kg)",
+            "g": "surface gravitational acceleration in m/s^2"
+          },
+          "explanation": "Mass stays the same when a person moves between worlds; weight changes because surface gravity changes."
+        },
+        "idealized_vertical_jump_height": {
+          "equation": "h = v^2 / (2 * g)",
+          "variables": {
+            "h": "ideal maximum rise above take-off point in metres (m)",
+            "v": "vertical take-off speed in metres per second (m/s)",
+            "g": "surface gravitational acceleration in m/s^2"
+          },
+          "assumptions": [
+            "The same vertical take-off speed is used for each world.",
+            "Air resistance is ignored.",
+            "The model does not include human biomechanics, suit mass, traction, or landing constraints."
+          ]
+        }
+      },
+      "unit_warning": "Do not confuse mass (kg), weight (N), gravitational acceleration (m/s^2), or gravitational field strength."
+    },
+    "internal_structure": {
+      "data_quality_rule": "Only publish layer thickness, pressure, or temperature as a numeric value when the cited source supports it. A null value means that this source set does not provide a sufficiently defensible layer-specific number; it does not mean that the physical quantity is zero.",
+      "pressure_temperature_warning": "Surface weather measurements are not measurements of deep interior pressure or temperature. Internal pressure and temperature profiles require geophysical models and depend on composition, density, and depth. Do not fill missing values with invented numbers.",
+      "bodies": [
+        {
+          "body": "Mars",
+          "mean_radius_km": 3389.5,
+          "layers": [
+            {
+              "layer": "Crust",
+              "material_or_state": "Solid silicate rocks; InSight seismic interpretation identifies three internal crustal layers beneath the lander.",
+              "thickness_km": {
+                "min": 25,
+                "max": 40
+              },
+              "thickness_status": "InSight seismic estimate below the landing region; not a uniform global crust thickness.",
+              "pressure_at_layer_GPa": null,
+              "temperature_K": null,
+              "explanation": "NASA reports a crust about 25-40 km thick beneath InSight. A single pressure or temperature value for the entire crust is not given in the cited NASA summary.",
+              "source_ids": [
+                "INSIGHT_STRUCTURE_HIGHLIGHTS"
+              ]
+            },
+            {
+              "layer": "Mantle",
+              "material_or_state": "Rocky silicate mantle between the crust and the metallic core.",
+              "thickness_km": {
+                "approx_min": 1550,
+                "approx_max": 1565
+              },
+              "thickness_status": "Approximate geometric estimate derived from Mars mean radius, the InSight core-radius estimate, and the crust-thickness range.",
+              "derivation": "Mantle thickness approximately equals mean planetary radius minus core radius minus crust thickness. The result is only a simplified spherical-shell estimate.",
+              "pressure_at_layer_GPa": null,
+              "temperature_K": {
+                "value": 1605,
+                "uncertainty": 100,
+                "depth_km_below_surface": 1006,
+                "status": "Model-derived mantle potential temperature at a seismic discontinuity, not the average temperature of the whole mantle."
+              },
+              "explanation": "InSight seismic analysis inferred a deep mantle discontinuity around 1,006 +/- 40 km and a mantle potential temperature near 1,605 +/- 100 K. Do not label this as the temperature of the entire mantle.",
+              "source_ids": [
+                "MARS_MANTLE_TEMPERATURE_STUDY",
+                "INSIGHT_STRUCTURE_HIGHLIGHTS",
+                "MARS_FACT_SHEET"
+              ]
+            },
+            {
+              "layer": "Core",
+              "material_or_state": "Molten metallic core; NASA's InSight summary describes the core as molten.",
+              "radius_km": {
+                "approx": 1800
+              },
+              "pressure_at_layer_GPa": null,
+              "temperature_K": null,
+              "explanation": "NASA reports an approximate core radius of 1,800 km. A single measured core temperature or a layer-wide pressure value is not provided in the cited summary.",
+              "source_ids": [
+                "INSIGHT_STRUCTURE_HIGHLIGHTS"
+              ]
+            }
+          ],
+          "surface_environment_context": {
+            "surface_temperature_range_C": {
+              "min": -153,
+              "max": 20
+            },
+            "note": "This is a broad planetary surface-temperature range, not an internal-layer temperature profile and not a guarantee for any specific landing site.",
+            "source_ids": [
+              "MARS_TEMPERATURES"
+            ]
+          }
+        },
+        {
+          "body": "Earth's Moon",
+          "mean_radius_km": 1737.4,
+          "layers": [
+            {
+              "layer": "Crust",
+              "material_or_state": "Solid rocky crust, composed mainly of oxygen, silicon, magnesium, iron, calcium, and aluminium-bearing minerals.",
+              "thickness_km": {
+                "near_side_approx": 40,
+                "far_side_up_to_approx": 60
+              },
+              "thickness_status": "NASA overview values; crust thickness varies across the Moon.",
+              "pressure_at_layer_GPa": null,
+              "temperature_K": null,
+              "explanation": "NASA gives approximately 40 km on the near side and up to about 60 km on the far side. The cited fact sheet does not provide layer-by-layer pressure or temperature values.",
+              "source_ids": [
+                "MOON_FACTS"
+              ]
+            },
+            {
+              "layer": "Mantle",
+              "material_or_state": "Mostly solid silicate mantle; likely minerals include olivine and pyroxene.",
+              "thickness_km": null,
+              "thickness_status": "Not specified as one simple value in the cited NASA overview; the mantle extends from the partially molten layer above the core to the base of the crust.",
+              "pressure_at_layer_GPa": null,
+              "temperature_K": null,
+              "explanation": "The mantle's composition is described by NASA, but an exact thickness, pressure profile, and temperature profile should be taken from a specific lunar interior model rather than invented.",
+              "source_ids": [
+                "MOON_FACTS"
+              ]
+            },
+            {
+              "layer": "Core",
+              "material_or_state": "A solid, iron-rich inner core surrounded by a liquid iron shell, with a partially molten layer around the core system.",
+              "inner_core_radius_km": 240,
+              "liquid_iron_shell_thickness_km": 90,
+              "partially_molten_outer_layer_thickness_km": null,
+              "pressure_at_layer_GPa": null,
+              "temperature_K": null,
+              "explanation": "NASA provides the inner-core radius and liquid-shell thickness. The overview does not give a thickness for the partially molten layer or a complete pressure-temperature profile.",
+              "source_ids": [
+                "MOON_FACTS"
+              ]
+            }
+          ],
+          "surface_environment_context": {
+            "south_pole_permanently_shadowed_region_temperature_C": {
+              "approx_min": -203
+            },
+            "note": "Permanently shadowed polar crater interiors can be extremely cold. Nearby illuminated ridges can be much warmer; conditions depend strongly on local terrain and illumination.",
+            "source_ids": [
+              "LUNAR_SOUTH_POLE_ENVIRONMENT",
+              "SHACKLETON_LIGHTING"
+            ]
+          }
+        },
+        {
+          "body": "Europa",
+          "mean_radius_km": 1560.8,
+          "layers": [
+            {
+              "layer": "Ice shell",
+              "material_or_state": "Water ice overlying a likely global saltwater ocean.",
+              "thickness_km": {
+                "older_general_estimate": {
+                  "min": 15,
+                  "max": 25
+                },
+                "Juno_2026_region_observed_average": 29
+              },
+              "thickness_status": "The 15-25 km interval is NASA's general overview estimate. Juno's January 2026 result reports an average near 29 km for the region observed during the 2022 flyby; it is a regional measurement, not a confirmed global mean.",
+              "pressure_at_layer_GPa": null,
+              "temperature_K": {
+                "surface_min": 50,
+                "surface_max": 140
+              },
+              "temperature_status": "NASA reports surface temperature estimates, not a temperature profile through the full ice shell.",
+              "explanation": "Use the newer 29 km result with its regional caveat, and keep the older general range for context. Do not present either as a precise global thickness.",
+              "source_ids": [
+                "EUROPA_FACTS",
+                "EUROPA_CLIPPER_FAQ",
+                "JUNO_EUROPA_ICE_2026"
+              ]
+            },
+            {
+              "layer": "Subsurface ocean",
+              "material_or_state": "Likely global saltwater ocean beneath the ice shell; strong evidence exists, while direct confirmation and detailed characterization remain mission objectives.",
+              "thickness_or_depth_km": {
+                "estimated_min": 60,
+                "estimated_max": 150
+              },
+              "pressure_at_layer_GPa": null,
+              "temperature_K": null,
+              "explanation": "NASA estimates an ocean depth of roughly 60-150 km. A single pressure or temperature profile for the ocean is not supplied in the cited public summaries.",
+              "source_ids": [
+                "EUROPA_FACTS",
+                "EUROPA_CLIPPER_FAQ"
+              ]
+            },
+            {
+              "layer": "Rocky mantle",
+              "material_or_state": "Rocky silicate interior beneath the ocean; exact dimensions are not precisely known.",
+              "thickness_km": null,
+              "pressure_at_layer_GPa": null,
+              "temperature_K": null,
+              "explanation": "NASA describes the rocky interior but does not provide a single defensible thickness, pressure, or temperature for this layer in the cited overview.",
+              "source_ids": [
+                "EUROPA_FACTS"
+              ]
+            },
+            {
+              "layer": "Metallic core",
+              "material_or_state": "Europa is thought to have an iron-rich or metallic core.",
+              "radius_km": null,
+              "pressure_at_layer_GPa": null,
+              "temperature_K": null,
+              "explanation": "The core is part of the leading internal-structure model, but its exact size and thermal profile are not established by the cited public overview.",
+              "source_ids": [
+                "EUROPA_FACTS"
+              ]
+            }
+          ],
+          "surface_environment_context": {
+            "surface_temperature_K": {
+              "min": 50,
+              "max": 140
+            },
+            "note": "The surface is extremely cold and exposed to intense radiation from Jupiter's magnetosphere. Europa is not included as a surface landing-site candidate in this submission.",
+            "source_ids": [
+              "EUROPA_CLIPPER_FAQ",
+              "EUROPA_FACTS"
+            ]
+          }
+        }
+      ],
+      "completion_note": "Layer-specific pressure and temperature values remain null wherever the cited NASA source does not publish a defensible value. This is scientifically safer than inventing figures, but it means the pressure/temperature part should be treated as a research limitation, not as a fully populated numeric table. If the project rubric explicitly requires a numeric value for every layer, add clearly labeled model-derived estimates from cited interior-structure studies; do not relabel surface weather temperatures as interior temperatures."
+    }
+  },
+  "cosmic_time_machine": {
+    "time_interval_Ga": {
+      "from": 4.0,
+      "to": 3.5,
+      "unit": "billion years ago"
+    },
+    "mars": {
+      "geological_context": "The Late Noachian is commonly placed at approximately 4.1 to 3.5 billion years ago.",
+      "scientific_findings": [
+        "Ancient valley networks, deltas, lake deposits, and water-altered minerals indicate that liquid water flowed or accumulated on the surface at least episodically.",
+        "Mars may have had a thicker atmosphere and more favorable surface conditions than it has today, but the exact atmospheric pressure and climate history remain active research questions.",
+        "The evidence does not mean that the entire planet had a continuously warm and wet climate for the whole interval."
+      ],
+      "ready_to_use_explanation": "About 4.0 to 3.5 billion years ago, during the Late Noachian, Mars experienced periods when liquid water flowed across the surface and collected in valleys, lakes, and river deltas. Its atmosphere was likely more substantial than today's very thin atmosphere, although the exact climate and atmospheric pressure are still being investigated.",
+      "source_ids": [
+        "MARS_TIME_HISTORY",
+        "EARLY_MARS_NOACHIAN",
+        "JEZERO_LANDING"
+      ],
+      "visual_asset_id": "MARS_3D"
+    },
+    "europa": {
+      "scientific_findings": [
+        "Europa is thought to have had a salty ocean beneath an outer ice shell for a large part, and possibly nearly all, of the solar system's approximately four-billion-year history.",
+        "The relevant liquid water is a subsurface ocean, not an exposed surface sea.",
+        "Europa's surface is icy and is exposed to intense radiation from Jupiter; a thick Earth-like atmosphere is not an established feature of Europa."
+      ],
+      "ready_to_use_explanation": "Between about 4.0 and 3.5 billion years ago, Europa may already have contained a salty ocean beneath its icy crust. Unlike ancient Mars, Europa's water is believed to remain underground, protected by ice, while Jupiter's radiation environment affects the surface.",
+      "source_ids": [
+        "EUROPA_OCEAN_HISTORY",
+        "EUROPA_FACTS",
+        "EUROPA_CLIPPER_FAQ"
+      ],
+      "visual_asset_id": "EUROPA_3D"
+    },
+    "comparison_note": "The two worlds should not be described as having the same water environment: Mars has evidence for ancient surface water, while Europa is investigated mainly for a hidden ocean beneath ice."
+  },
+  "landing_site_locator": {
+    "coordinate_format": "Decimal degrees; latitude is positive north and negative south; longitude is positive east and negative west.",
+    "coordinate_note": "For landing points, use the actual touchdown coordinate when published. For a named crater candidate such as Shackleton, use the feature centre coordinate and label it as a crater centre, not as a lander touchdown point.",
+    "mars_sites": [
+      {
+        "site_id": "MARS_JEZERO_PERSEVERANCE",
+        "name": "Jezero Crater - Perseverance touchdown area",
+        "body": "Mars",
+        "site_status": "Confirmed robotic landing site",
+        "mission": "Mars 2020 Perseverance",
+        "coordinates": {
+          "latitude_deg": 18.44463,
+          "longitude_deg": 77.45088,
+          "latitude_hemisphere": "N",
+          "longitude_hemisphere": "E",
+          "map_array_lat_lon": [
+            18.44463,
+            77.45088
+          ]
+        },
+        "reference_point": "Actual Perseverance touchdown coordinate reported in a NASA technical report.",
+        "why_selected": [
+          "Jezero preserves evidence of an ancient lake and river delta.",
+          "Delta sediments and water-altered minerals are valuable for studying past habitability and preserving possible biosignatures.",
+          "Perseverance is collecting and caching samples for future study."
+        ],
+        "base_planning_considerations": [
+          "Map local slopes, boulders, loose regolith, and dust before choosing a habitat cell.",
+          "The historical rover touchdown coordinate is a scientific reference point, not an automatically approved human-base location."
+        ],
+        "source_ids": [
+          "JEZERO_LANDING",
+          "JEZERO_TOUCHDOWN_COORDINATES",
+          "MARS2020_PDS",
+          "PERSEVERANCE_LOCATION_MAP"
+        ],
+        "landing_date_utc": "2021-02-18",
+        "landing_date_note": "NASA confirms Perseverance landed in Jezero Crater on February 18, 2021.",
+        "visual_asset_id": "MARS_3D"
+      },
+      {
+        "site_id": "MARS_GALE_CURIOSITY",
+        "name": "Gale Crater - Curiosity landing area",
+        "body": "Mars",
+        "site_status": "Confirmed robotic landing site",
+        "mission": "Mars Science Laboratory Curiosity",
+        "coordinates": {
+          "latitude_deg": -4.5,
+          "longitude_deg": 137.4,
+          "latitude_hemisphere": "S",
+          "longitude_hemisphere": "E",
+          "map_array_lat_lon": [
+            -4.5,
+            137.4
+          ]
+        },
+        "coordinate_precision_note": "Approximate landing-region reference, not a precision rover navigation fix. NASA mission material rounds the touchdown region to about 4.6 degrees south, 137.4 degrees east; site-selection material also gives the planned landing area as 4.5 degrees south, 137.4 degrees east.",
+        "reference_point": "Approximate Curiosity landing location in Gale Crater.",
+        "why_selected": [
+          "Gale contains a layered central mountain and sedimentary materials that preserve a long geological record.",
+          "The landing region includes an alluvial fan and minerals associated with past interaction with water.",
+          "Curiosity investigates whether the ancient environment could have supported microbial life."
+        ],
+        "base_planning_considerations": [
+          "Avoid steep slopes and unstable surfaces near the layered mound.",
+          "Use local rover and orbital topography rather than the crater centre as a precise base coordinate."
+        ],
+        "source_ids": [
+          "GALE_LANDING",
+          "MARS_ATMOSPHERE_ARCHIVE",
+          "CURIOSITY_MISSION"
+        ],
+        "landing_date_utc": "2012-08-06",
+        "landing_date_note": "UTC date. The landing occurred on the evening of August 5, 2012 Pacific Daylight Time.",
+        "visual_asset_id": "MARS_3D"
+      },
+      {
+        "site_id": "MARS_GUSEV_SPIRIT",
+        "name": "Gusev Crater - Spirit landing point",
+        "body": "Mars",
+        "site_status": "Confirmed robotic landing site",
+        "mission": "Mars Exploration Rover Spirit",
+        "coordinates": {
+          "latitude_deg": -14.5692,
+          "longitude_deg": 175.4729,
+          "latitude_hemisphere": "S",
+          "longitude_hemisphere": "E",
+          "map_array_lat_lon": [
+            -14.5692,
+            175.4729
+          ]
+        },
+        "reference_point": "Actual Spirit landing coordinate reported by NASA.",
+        "why_selected": [
+          "Gusev is a large impact crater with a geological history relevant to ancient water-related processes.",
+          "Spirit investigated rocks and soils that helped reconstruct the region's volcanic and aqueous history.",
+          "The site provides a real, historically verified landing reference for the locator."
+        ],
+        "base_planning_considerations": [
+          "The landing point and rover traverse are scientific references, not a modern human-habitat safety certification.",
+          "A future base assessment would need updated terrain, dust, radiation, and resource measurements."
+        ],
+        "source_ids": [
+          "SPIRIT_LANDING",
+          "IPDA_MARS_DATA"
+        ],
+        "landing_date_utc": "2004-01-04",
+        "landing_date_note": "UTC date. NASA describes touchdown as January 3, 2004 at 20:35 Pacific Standard Time.",
+        "visual_asset_id": "MARS_3D"
+      }
+    ],
+    "moon_sites": [
+      {
+        "site_id": "MOON_SHACKLETON_CRATER",
+        "name": "Shackleton Crater - South Pole candidate region",
+        "body": "Earth's Moon",
+        "site_status": "Potential future exploration and resource-study region; not a confirmed human landing site",
+        "coordinates": {
+          "latitude_deg": -89.67,
+          "longitude_deg": 129.78,
+          "latitude_hemisphere": "S",
+          "longitude_hemisphere": "E",
+          "map_array_lat_lon": [
+            -89.67,
+            129.78
+          ]
+        },
+        "reference_point": "Adopted centre coordinate of the named crater from the USGS/IAU planetary nomenclature gazetteer.",
+        "why_selected": [
+          "Parts of the rim receive sunlight for a large fraction of the year, which may help solar-power planning.",
+          "The interior is permanently shadowed in places, creating cold traps where water ice may be preserved.",
+          "The nearby combination of illuminated terrain and shadowed regions is scientifically valuable for future polar exploration."
+        ],
+        "important_correction": "Do not claim that Shackleton Crater itself protects a base from radiation. Its value is related to polar resources and illumination patterns. Radiation protection would require suitable shielding and habitat design.",
+        "base_planning_considerations": [
+          "A base would more plausibly be assessed on a verified illuminated rim or nearby ridge, not automatically at the crater-centre coordinate.",
+          "The crater floor can be extremely cold and permanently dark; access routes, slopes, line-of-sight communications, and power storage are major constraints.",
+          "The centre coordinate is a locator reference for the crater, not a surveyed landing ellipse."
+        ],
+        "source_ids": [
+          "SHACKLETON_GAZETTEER",
+          "SHACKLETON_LIGHTING",
+          "LUNAR_SOUTH_POLE_ENVIRONMENT",
+          "LRO_NASA_DATA_PRODUCTS"
+        ]
+      },
+      {
+        "site_id": "MOON_TAURUS_LITTROW_APOLLO17",
+        "name": "Taurus-Littrow Valley - Apollo 17 landing site",
+        "body": "Earth's Moon",
+        "site_status": "Confirmed crewed landing site",
+        "mission": "Apollo 17",
+        "coordinates": {
+          "latitude_deg": 20.1911,
+          "longitude_deg": 30.7723,
+          "latitude_hemisphere": "N",
+          "longitude_hemisphere": "E",
+          "map_array_lat_lon": [
+            20.1911,
+            30.7723
+          ]
+        },
+        "reference_point": "Apollo 17 lunar-module landing coordinate in the NASA NSSDC landing-site coordinate table.",
+        "why_selected": [
+          "Apollo 17 explored a valley on the edge of Mare Serenitatis with a useful variety of geological materials.",
+          "The site provided access to both older highland materials and younger volcanic materials.",
+          "It is a confirmed landing site with extensive mission documentation and LRO imaging."
+        ],
+        "base_planning_considerations": [
+          "Historical Apollo landing does not establish present-day suitability for a permanent base.",
+          "A permanent installation would need radiation shielding, thermal control, power storage, and updated high-resolution terrain analysis."
+        ],
+        "source_ids": [
+          "APOLLO_LANDING_COORDINATES",
+          "APOLLO_17_CONTEXT",
+          "LRO_NASA_DATA_PRODUCTS"
+        ],
+        "landing_date_utc": "1972-12-11",
+        "landing_date_note": "Apollo 17 lunar landing date in UTC."
+      },
+      {
+        "site_id": "MOON_DESCARTES_APOLLO16",
+        "name": "Descartes Highlands - Apollo 16 landing site",
+        "body": "Earth's Moon",
+        "site_status": "Confirmed crewed landing site",
+        "mission": "Apollo 16",
+        "coordinates": {
+          "latitude_deg": -8.9734,
+          "longitude_deg": 15.5011,
+          "latitude_hemisphere": "S",
+          "longitude_hemisphere": "E",
+          "map_array_lat_lon": [
+            -8.9734,
+            15.5011
+          ]
+        },
+        "reference_point": "Apollo 16 lunar-module landing coordinate in the NASA NSSDC landing-site coordinate table.",
+        "why_selected": [
+          "Descartes is a central lunar-highlands region with hilly and grooved terrain.",
+          "Apollo 16 was selected to sample highlands materials and investigate the Moon's early crustal history.",
+          "The site provides a second historically verified lunar landing reference outside the south-polar environment."
+        ],
+        "base_planning_considerations": [
+          "The highlands terrain requires detailed local slope and boulder mapping.",
+          "The site is not a polar-ice target; resource planning would be different from Shackleton."
+        ],
+        "source_ids": [
+          "APOLLO_LANDING_COORDINATES",
+          "APOLLO_16_CONTEXT"
+        ],
+        "landing_date_utc": "1972-04-21",
+        "landing_date_note": "April 20, 1972 Eastern Standard Time; April 21, 1972 UTC."
+      }
+    ],
+    "base_grid_specification": {
+      "purpose": "A preliminary planning and visualization grid around each selected reference point. It is not a certified landing or construction plan.",
+      "rows": 5,
+      "columns": 5,
+      "cell_labels": "A1 through E5, with C3 as the centre cell",
+      "nominal_cell_width_m": 1000,
+      "origin": "The coordinates listed for each site define the grid reference origin.",
+      "local_coordinate_system": "Use local East-North-Up (ENU) offsets in metres for ordinary sites. For Shackleton and other polar locations, use a suitable lunar south-polar map projection rather than treating longitude degrees as equal-distance east-west steps.",
+      "required_layers_for_a_real_base_grid": [
+        "High-resolution elevation and slope from orbital altimetry or stereo imagery",
+        "Boulder and crater hazard mapping",
+        "Illumination and shadow-duration mapping",
+        "Thermal-inertia and surface-temperature mapping",
+        "Communication line-of-sight and relay coverage",
+        "Radiation environment and shielding assumptions",
+        "Resource-prospecting data, clearly distinguishing confirmed ice from possible ice"
+      ],
+      "warning": "The 1 km cell width is a project visualization choice. It is not a NASA-recommended habitat dimension and must not be used for real mission navigation."
+    },
+    "mars_rover_landing_records": [
+      {
+        "mission": "Mars 2020 Perseverance",
+        "rover": "Perseverance",
+        "landing_site": "Jezero Crater",
+        "landing_date_utc": "2021-02-18",
+        "landing_date_note": "NASA mission date: February 18, 2021.",
+        "coordinates": {
+          "latitude_deg": 18.44463,
+          "longitude_deg": 77.45088,
+          "latitude_hemisphere": "N",
+          "longitude_hemisphere": "E"
+        },
+        "coordinate_status": "Published touchdown coordinate in the NASA technical-report source already listed in this dataset.",
+        "source_ids": [
+          "JEZERO_TOUCHDOWN_COORDINATES",
+          "PERSEVERANCE_LOCATION_MAP"
+        ]
+      },
+      {
+        "mission": "Mars Science Laboratory",
+        "rover": "Curiosity",
+        "landing_site": "Gale Crater (Bradbury Landing region)",
+        "landing_date_utc": "2012-08-06",
+        "landing_date_note": "The event occurred on August 5, 2012 Pacific Daylight Time and August 6, 2012 UTC.",
+        "coordinates": {
+          "latitude_deg": -4.6,
+          "longitude_deg": 137.4,
+          "latitude_hemisphere": "S",
+          "longitude_hemisphere": "E"
+        },
+        "coordinate_status": "Approximate touchdown region rounded to one decimal degree in NASA mission material; this is not a precision rover navigation fix.",
+        "source_ids": [
+          "CURIOSITY_MISSION",
+          "GALE_LANDING"
+        ]
+      },
+      {
+        "mission": "Mars Exploration Rover Mission (MER-B)",
+        "rover": "Opportunity",
+        "landing_site": "Meridiani Planum; the rover came to rest inside Eagle Crater",
+        "landing_date_utc": "2004-01-25",
+        "landing_date_note": "NASA gives January 25, 2004 UTC; touchdown was January 24, 2004 at 21:05 Pacific Standard Time.",
+        "coordinates": {
+          "latitude_deg": -1.9483,
+          "longitude_deg": 354.47417,
+          "latitude_hemisphere": "S",
+          "longitude_hemisphere": "E",
+          "longitude_convention": "East longitude on a 0-to-360-degree system"
+        },
+        "coordinate_status": "NASA-published touchdown coordinate. The east longitude is equivalent to 5.52583 degrees west in a -180-to-180 convention.",
+        "source_ids": [
+          "OPPORTUNITY_MISSION",
+          "IPDA_MARS_DATA"
+        ]
+      },
+      {
+        "mission": "Mars Exploration Rover Mission (MER-A)",
+        "rover": "Spirit",
+        "landing_site": "Gusev Crater",
+        "landing_date_utc": "2004-01-04",
+        "landing_date_note": "NASA gives January 3, 2004 at 20:35 Pacific Standard Time; this is January 4, 2004 UTC.",
+        "coordinates": {
+          "latitude_deg": -14.5692,
+          "longitude_deg": 175.4729,
+          "latitude_hemisphere": "S",
+          "longitude_hemisphere": "E"
+        },
+        "coordinate_status": "NASA-published landing coordinate.",
+        "source_ids": [
+          "SPIRIT_LANDING",
+          "IPDA_MARS_DATA"
+        ]
+      }
+    ]
+  },
+  "site_suitability_screening": {
+    "display_label": "Relative Site Suitability Index (%)",
+    "not_a_safety_probability": true,
+    "disclaimer": "These are illustrative student-project scores based on broad environmental evidence and qualitative 1-to-5 hazard ratings. They are not NASA ratings, not measured probabilities of survival, not a substitute for mission engineering, and not location-specific dosimetry. Actual human safety depends on habitat shielding, mission duration, solar events, thermal systems, terrain, power, and many other factors.",
+    "rating_scale": {
+      "1": "Low hazard",
+      "2": "Relatively low hazard",
+      "3": "Moderate hazard",
+      "4": "High hazard",
+      "5": "Very high hazard"
+    },
+    "weights": {
+      "radiation_hazard": 0.4,
+      "cold_and_thermal_hazard": 0.35,
+      "terrain_and_access_hazard": 0.25
+    },
+    "calculation": {
+      "risk_score_equation": "risk_score = 0.40 * radiation_rating + 0.35 * thermal_rating + 0.25 * terrain_rating",
+      "relative_suitability_index_equation": "index_percent = 100 * (5 - risk_score) / 4",
+      "interpretation": "A larger index means fewer relative hazards under this simplified scoring model. It does not mean that the same percentage of people or missions would be safe."
+    },
+    "evidence_and_limits": [
+      {
+        "factor": "Mars radiation",
+        "evidence": "Curiosity's RAD instrument measured the Martian surface radiation environment. A commonly cited dose-equivalent estimate is about 0.64 +/- 0.12 mSv/day for galactic cosmic rays under the measured mission conditions; the value varies with solar activity and atmospheric shielding.",
+        "limitation": "This is not a separate measurement at Jezero, Gale, and Gusev. It is used only as broad Mars-surface context.",
+        "source_ids": [
+          "MARS_RADIATION",
+          "MARS_DOSE_EQUIVALENT_STUDY"
+        ]
+      },
+      {
+        "factor": "Mars temperature",
+        "evidence": "NASA gives a broad planetary surface range of roughly -153 C to +20 C; Perseverance local ground and air measurements have narrower but still very cold ranges.",
+        "limitation": "Global ranges are not substitutes for a complete seasonal temperature record at every site.",
+        "source_ids": [
+          "MARS_TEMPERATURES",
+          "MARS_ATMOSPHERE_ARCHIVE"
+        ]
+      },
+      {
+        "factor": "Lunar radiation",
+        "evidence": "The Moon lacks a substantial protective atmosphere and a global magnetic field like Earth's. NASA's Apollo-era radiation records provide historical lunar dose-rate context.",
+        "limitation": "Apollo-era dose-rate estimates are not a modern site-specific radiation survey for the three selected locations.",
+        "source_ids": [
+          "LUNAR_RADIATION",
+          "LRO_PDS_ARCHIVE"
+        ]
+      },
+      {
+        "factor": "Lunar polar temperature and lighting",
+        "evidence": "NASA describes extremely cold permanently shadowed regions and nearby illuminated terrain around the lunar South Pole.",
+        "limitation": "The Shackleton score applies to a candidate illuminated rim or nearby ridge with access to shadowed science targets, not to a habitat placed on the permanently shadowed crater floor.",
+        "source_ids": [
+          "LUNAR_SOUTH_POLE_ENVIRONMENT",
+          "SHACKLETON_LIGHTING"
+        ]
+      }
+    ],
+    "site_estimates": [
+      {
+        "site_id": "MARS_JEZERO_PERSEVERANCE",
+        "hazard_ratings": {
+          "radiation": 3,
+          "cold_and_thermal": 4,
+          "terrain_and_access": 3
+        },
+        "risk_score": 3.35,
+        "relative_suitability_index_percent": 41.25,
+        "confidence": "Low; broad Mars-wide environmental data and qualitative terrain rating only.",
+        "explanation": "Jezero offers a strong scientific rationale because of its ancient delta, but Mars surface radiation and temperature extremes remain significant. Local slope and hazard maps are required before any base decision."
+      },
+      {
+        "site_id": "MARS_GALE_CURIOSITY",
+        "hazard_ratings": {
+          "radiation": 3,
+          "cold_and_thermal": 4,
+          "terrain_and_access": 3
+        },
+        "risk_score": 3.35,
+        "relative_suitability_index_percent": 41.25,
+        "confidence": "Low; broad Mars-wide environmental data and qualitative terrain rating only.",
+        "explanation": "Gale provides extensive geological context and a documented rover landing area. The layered mountain and nearby slopes require careful local terrain screening."
+      },
+      {
+        "site_id": "MARS_GUSEV_SPIRIT",
+        "hazard_ratings": {
+          "radiation": 3,
+          "cold_and_thermal": 4,
+          "terrain_and_access": 3
+        },
+        "risk_score": 3.35,
+        "relative_suitability_index_percent": 41.25,
+        "confidence": "Low; broad Mars-wide environmental data and qualitative terrain rating only.",
+        "explanation": "Gusev is a confirmed rover landing region and a useful geological reference. The score does not imply that the historical rover touchdown point is suitable for a human base."
+      },
+      {
+        "site_id": "MOON_SHACKLETON_CRATER",
+        "hazard_ratings": {
+          "radiation": 5,
+          "cold_and_thermal": 3,
+          "terrain_and_access": 4
+        },
+        "risk_score": 4.05,
+        "relative_suitability_index_percent": 23.75,
+        "confidence": "Low; score assumes a surveyed illuminated rim or nearby ridge, not the permanently shadowed crater floor.",
+        "explanation": "The polar region may offer useful illumination and access to possible water ice, but radiation, steep terrain, low-angle sunlight, shadow transitions, and extreme cold nearby are major constraints."
+      },
+      {
+        "site_id": "MOON_TAURUS_LITTROW_APOLLO17",
+        "hazard_ratings": {
+          "radiation": 5,
+          "cold_and_thermal": 4,
+          "terrain_and_access": 3
+        },
+        "risk_score": 4.15,
+        "relative_suitability_index_percent": 21.25,
+        "confidence": "Low; qualitative comparison only, not a site-specific thermal or radiation survey.",
+        "explanation": "The site has valuable mission history and geological diversity, but the Moon's lack of atmosphere leaves the surface exposed to radiation and strong thermal cycles."
+      },
+      {
+        "site_id": "MOON_DESCARTES_APOLLO16",
+        "hazard_ratings": {
+          "radiation": 5,
+          "cold_and_thermal": 4,
+          "terrain_and_access": 4
+        },
+        "risk_score": 4.4,
+        "relative_suitability_index_percent": 15.0,
+        "confidence": "Low; qualitative comparison only, not a site-specific thermal or radiation survey.",
+        "explanation": "The highlands provide strong geological value but the hilly and grooved terrain may complicate access. Lunar radiation and temperature extremes remain significant."
+      }
+    ],
+    "presentation_rule": "Display the number as a Relative Site Suitability Index, not as a literal Safety Probability or a NASA-certified Safety %. Include the disclaimer next to the chart or table."
+  },
+  "submission_checklist": [
+    "Include the official data-source URLs and briefly state what each source is used for.",
+    "Use gravity values 3.73 m/s^2 for Mars, 1.62 m/s^2 for the Moon, and 1.315 m/s^2 for Europa.",
+    "Use W = m * g for weight and h = v^2 / (2 * g) for idealized vertical jump height.",
+    "For each internal layer, show supported thickness values and explicitly mark unavailable pressure or temperature values as null with an explanation.",
+    "Use the corrected Cosmic Time Machine descriptions: ancient surface water on Mars; a likely subsurface ocean beneath Europa's ice.",
+    "Show three Mars sites and three lunar sites with decimal-degree latitude and longitude and a reason for each selection.",
+    "Label Shackleton as a future candidate region, not a historic crewed landing site; label Apollo 16 and Apollo 17 as historic crewed landing sites.",
+    "Show the base-grid definition and state that the grid is a planning visualization only.",
+    "Label every site score as a relative suitability index and show the caveat that it is not an actual safety probability.",
+    "Include Opportunity's Meridiani Planum landing coordinates and UTC date, as explicitly requested in the task image.",
+    "Include Curiosity's Gale Crater landing date and a clearly qualified approximate landing-region coordinate.",
+    "Include the NASA planetary visual gallery with Earth, Mars, and Europa preview images and official 3D model links."
+  ],
+  "planetary_visual_gallery": {
+    "section_title": "NASA 3D Planetary Visual Gallery",
+    "purpose": "Provide NASA-sourced visual references and official 3D model resources for Earth, Mars, and Europa (Jupiter's moon).",
+    "website_placement": {
+      "recommended_position": "Place this gallery directly after the project introduction and before the scientific fact-checking and landing-site sections.",
+      "display_order": [
+        "EARTH_3D",
+        "MARS_3D",
+        "EUROPA_3D"
+      ],
+      "mars_image_reuse": "Reuse the Mars preview image in the Mars science and Mars landing-site overview sections.",
+      "europa_image_reuse": "Reuse the Europa preview image in the Cosmic Time Machine and Europa internal-structure sections."
+    },
+    "shared_interactive_3d_viewer": {
+      "title": "NASA Eyes on the Solar System",
+      "url": "https://eyes.nasa.gov/apps/solar-system/",
+      "provider": "NASA/JPL-Caltech",
+      "format": "Browser-based interactive 3D solar-system visualization",
+      "description": "Explore planets, moons, and spacecraft in a 3D solar-system environment. Use this shared viewer for Earth, Mars, and Europa.",
+      "source_id": "NASA_EYES_SOLAR_SYSTEM"
+    },
+    "assets": [
+      {
+        "asset_id": "EARTH_3D",
+        "display_order": 1,
+        "name": "Earth",
+        "common_name": "Planet Earth",
+        "object_type": "Planet",
+        "role_in_project": "Reference world for comparing planetary environments, gravity, habitability, and exploration conditions.",
+        "preview_image": {
+          "title": "NASA Blue Marble Earth",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/climate/2023/12/ImageWall5_1920x1200-80.jpg",
+          "source_page_url": "https://science.nasa.gov/resource/blue-marble/",
+          "alt_text": "A full-globe view of Earth showing oceans, continents, and cloud systems against a dark background.",
+          "credit": "NASA Goddard Space Flight Center; image by Reto Stöckli, with enhancements by Robert Simmon.",
+          "image_note": "Use as the static preview image in the website card. The image is a NASA Earth visualization, not the interactive 3D model file."
+        },
+        "nasa_3d_model": {
+          "title": "Earth 3D Model Interactive",
+          "page_url": "https://science.nasa.gov/learn/heat/resource/earth-3d-model/",
+          "provider_credit": "NASA/JPL-Caltech",
+          "available_download_formats": [
+            "glTF",
+            "USDZ"
+          ],
+          "download_note": "Open the NASA model page and use its 3D model download links. The page lists glTF and USDZ files.",
+          "interaction_note": "Use the NASA Earth model resource and the shared NASA Eyes viewer for 3D exploration.",
+          "source_id": "EARTH_3D_MODEL"
+        },
+        "shared_viewer_url": "https://eyes.nasa.gov/apps/solar-system/",
+        "source_ids": [
+          "EARTH_BLUE_MARBLE_IMAGE",
+          "EARTH_3D_MODEL",
+          "NASA_EYES_SOLAR_SYSTEM"
+        ]
+      },
+      {
+        "asset_id": "MARS_3D",
+        "display_order": 2,
+        "name": "Mars",
+        "common_name": "The Red Planet",
+        "object_type": "Planet",
+        "role_in_project": "Main exploration target for the gravity comparison, internal-structure research, rover landing records, and landing-site locator.",
+        "preview_image": {
+          "title": "Mars True-Color Globe",
+          "url": "https://svs.gsfc.nasa.gov/vis/a000000/a000600/a000659/mars_tc_globe3.jpg",
+          "source_page_url": "https://svs.gsfc.nasa.gov/659/",
+          "alt_text": "A global view of Mars in natural reddish-brown tones, showing major surface features and topography.",
+          "credit": "NASA Goddard Space Flight Center Scientific Visualization Studio; Viking imagery and MOLA topographic data.",
+          "image_note": "Use as the static preview image in the Mars card and Mars locator overview. NASA SVS also provides rotating-globe visualizations on the source page."
+        },
+        "nasa_3d_model": {
+          "title": "Planet Mars 3D Model",
+          "page_url": "https://science.nasa.gov/resource/planet-mars-3d-model/",
+          "provider_credit": "NASA/JPL-Caltech",
+          "available_download_formats": [
+            "glTF",
+            "USDZ"
+          ],
+          "download_note": "Open the NASA model page and use its 3D model download links. The page lists glTF and USDZ files.",
+          "interaction_note": "NASA states that the Mars model can be rotated by clicking or touching and dragging on the model page.",
+          "source_id": "MARS_3D_MODEL"
+        },
+        "shared_viewer_url": "https://eyes.nasa.gov/apps/solar-system/",
+        "source_ids": [
+          "MARS_TRUE_COLOR_GLOBE",
+          "MARS_3D_MODEL",
+          "NASA_EYES_SOLAR_SYSTEM"
+        ]
+      },
+      {
+        "asset_id": "EUROPA_3D",
+        "display_order": 3,
+        "name": "Europa",
+        "common_name": "Jupiter's Moon Europa",
+        "object_type": "Natural satellite",
+        "parent_body": "Jupiter",
+        "role_in_project": "Main icy-moon comparison target for the Cosmic Time Machine and internal-structure research. Europa is not treated as a confirmed landing-site candidate.",
+        "preview_image": {
+          "title": "A JunoCam View of Europa",
+          "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26331/PIA26331.jpg",
+          "source_page_url": "https://science.nasa.gov/photojournal/a-junocam-view-of-europa/",
+          "alt_text": "Jupiter's moon Europa shown as an icy world with long fractures, ridges, and bands across its surface.",
+          "credit": "Image data: NASA/JPL-Caltech/SwRI/MSSS; image processing: Björn Jónsson (CC BY 3.0).",
+          "image_note": "Use as the static preview image in the Europa card. It is a spacecraft image, while the rotatable/downloadable 3D model is on the separate NASA model page."
+        },
+        "nasa_3d_model": {
+          "title": "Europa 3D Model",
+          "page_url": "https://science.nasa.gov/resource/europa-3d-model/",
+          "provider_credit": "NASA Visualization Technology Applications and Development (VTAD)",
+          "available_download_formats": [
+            "glTF",
+            "USDZ"
+          ],
+          "download_note": "Open the NASA model page and use its 3D model download links. The page lists glTF and USDZ files.",
+          "interaction_note": "Use the NASA Europa 3D model resource or open Europa in the shared NASA Eyes on the Solar System viewer.",
+          "source_id": "EUROPA_3D_MODEL"
+        },
+        "shared_viewer_url": "https://eyes.nasa.gov/apps/solar-system/",
+        "source_ids": [
+          "EUROPA_JUNOCAM_IMAGE",
+          "EUROPA_3D_MODEL",
+          "NASA_EYES_SOLAR_SYSTEM"
+        ]
+      }
+    ],
+    "implementation_notes": [
+      "The preview_image.url field is the source for an HTML image element (img src).",
+      "The nasa_3d_model.page_url field should be attached to a button or link labeled View 3D Model.",
+      "The shared_interactive_3d_viewer.url opens NASA's browser-based solar-system 3D environment.",
+      "A JSON file stores image and model URLs; it does not display images by itself. The website or app must read these fields and render the image cards and model links.",
+      "The preview image and the interactive 3D model are separate assets. Do not label a still image as an interactive 3D model."
+    ]
+  }
+}
