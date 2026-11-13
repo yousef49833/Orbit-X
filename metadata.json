@@ -1,0 +1,7 @@
+{
+  "name": "Orbit-X // Holographic Space Mission Design Lab",
+  "description": "Orbit-X mission control environment for planetary simulation, landing-site analysis, and flight director briefing workflows.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_TELEMETRY_STREAMING", "MAJOR_CAPABILITY_ORBITAL_SIMULATION"]
+}
+

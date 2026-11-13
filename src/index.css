@@ -1,0 +1,229 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-holo-cyan: #00f0ff;
+    --color-holo-purple: #7000ff;
+    --color-holo-blue: #0088ff;
+    --color-holo-amber: #ffaa00;
+    --color-holo-emerald: #00ff88;
+    --color-space-bg: #050510;
+  }
+
+  body {
+    background-color: #050510;
+    color: #e0f7fc;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 0.02em;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  code, pre, .font-tech-mono {
+    font-family: 'Share Tech Mono', monospace;
+  }
+}
+
+/* Moving CRT / Hologram Horizontal Scanlines */
+.scanlines-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 240, 255, 0.06) 50%,
+    rgba(0, 240, 255, 0.06)
+  );
+  background-size: 100% 4px;
+  animation: scanlineScroll 0.35s linear infinite;
+  pointer-events: none;
+}
+
+/* CRT Sweeping Beam */
+.crt-beam-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 240, 255, 0) 0%,
+    rgba(0, 240, 255, 0.04) 50%,
+    rgba(0, 240, 255, 0.12) 51%,
+    rgba(0, 240, 255, 0) 100%
+  );
+  height: 120px;
+  animation: crtSweep 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scanlineScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 8px;
+  }
+}
+
+@keyframes crtSweep {
+  0% {
+    top: -150px;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Subtle Vignette & CRT Screen curve shadow */
+.crt-vignette {
+  box-shadow: inset 0 0 100px rgba(0, 5, 20, 0.85), inset 0 0 40px rgba(0, 240, 255, 0.1);
+  pointer-events: none;
+}
+
+/* Holographic Card Glassmorphism */
+.holo-panel {
+  background: rgba(7, 13, 29, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 15px rgba(0, 240, 255, 0.05),
+    0 0 10px rgba(0, 240, 255, 0.1);
+}
+
+.holo-panel-purple {
+  background: rgba(15, 7, 30, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(112, 0, 255, 0.35);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.5),
+    inset 0 0 15px rgba(112, 0, 255, 0.08),
+    0 0 15px rgba(112, 0, 255, 0.15);
+}
+
+.holo-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.holo-panel-hover:hover {
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 
+    0 12px 40px 0 rgba(0, 0, 0, 0.7),
+    inset 0 0 20px rgba(0, 240, 255, 0.12),
+    0 0 20px rgba(0, 240, 255, 0.25);
+}
+
+/* Neon Text Glows */
+.text-glow-cyan {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 8px rgba(112, 0, 255, 0.8), 0 0 20px rgba(112, 0, 255, 0.4);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 8px rgba(255, 170, 0, 0.7), 0 0 20px rgba(255, 170, 0, 0.4);
+}
+
+/* Holographic Reticle corner brackets */
+.reticle-bracket-tl {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #00f0ff;
+  border-left: 2px solid #00f0ff;
+  pointer-events: none;
+}
+
+.reticle-bracket-tr {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #00f0ff;
+  border-right: 2px solid #00f0ff;
+  pointer-events: none;
+}
+
+.reticle-bracket-bl {
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #00f0ff;
+  border-left: 2px solid #00f0ff;
+  pointer-events: none;
+}
+
+.reticle-bracket-br {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #00f0ff;
+  border-right: 2px solid #00f0ff;
+  pointer-events: none;
+}
+
+/* Custom Holographic Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(5, 5, 16, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.6);
+}
+
+.holo-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 240, 255, 0.4) rgba(5, 10, 24, 0.75);
+}
+.holo-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.holo-scrollbar::-webkit-scrollbar-track {
+  background: rgba(5, 10, 24, 0.75);
+  border-radius: 999px;
+}
+.holo-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.35);
+  border-radius: 999px;
+}
+.holo-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.7);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pulsing radar grid animation */
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radarSweep 5s linear infinite;
+}
